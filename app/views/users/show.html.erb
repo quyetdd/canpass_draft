@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<% if flash[:success] %>
+  <p><span class="notification"><%= flash[:success] %></span></p>
+<% end %>
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+<p>
+  <b>Fullname:</b>
+  <%= @user.fullname %>
+</p>
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @user.role_id %>
+</p>
+<p>
+  <b>Last login:</b>
+  <%= @user.last_login %>
+</p>
+<p>
+  <b>Language:</b>
+  <%= @user.language %>
+</p>
+<p>
+  <b>Status:</b>
+  <%= @user.status %>
+</p>
+<p>
+  <b>Password flg:</b>
+  <%= @user.password_flg %>
+</p>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
