@@ -23,6 +23,7 @@ group :development, :test do
   gem "binding_of_caller"
   gem "growl"
   gem "rb-fsevent", require: false
+  gem "pry"
 end
 
 gem "jquery-rails"
