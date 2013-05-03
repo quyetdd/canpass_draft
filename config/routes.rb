@@ -1,14 +1,5 @@
 Canpass::Application.routes.draw do
-  resources :apps do as_routes end
-
-  resources :models do as_routes end
-
-  resources :groups do as_routes end
-
-  get "test_ruby/index"
-
-  get "test/septeni"
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
