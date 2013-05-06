@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_username(params[:session][:email].downcase)
+    user = User.find_by_email(params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       flash[:success] = "Welcome to Canpass"
       sign_in user
