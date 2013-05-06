@@ -7,9 +7,10 @@ class CreateClients < ActiveRecord::Migration
       t.string :department_name
       t.integer :contract_flg
       t.integer :contract_type
-      t.integer :del_flg
+      t.integer :del_flg, default: 1
 
       t.timestamps
     end
+    add_index :clients, :client_name, unique: true
   end
 end
