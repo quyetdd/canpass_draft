@@ -8,10 +8,12 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :role_id
       t.datetime :last_login
       t.string :language
-      t.integer :status
-      t.string :password_flg
+      t.integer :status, default: 1
+      t.integer :password_flg
 
       t.timestamps
     end
+    add_index :users, :username, unique: true
+    add_index :users, :email, unique: true
   end
 end

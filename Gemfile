@@ -21,9 +21,25 @@ end
 group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
-  gem "growl"
-  gem "rb-fsevent", require: false
   gem "pry"
+  gem "pry-doc"
+  gem "pry-debugger"
+  gem "pry-stack_explorer"
+  gem "pry-rails"
+  gem "growl"
+  gem "guard"
+  gem "guard-rspec"
+  gem "guard-spork"
+  gem "rb-fsevent", require: false
+end
+
+group :test do
+  gem "rspec-rails"
+  gem "spork", "~> 0.9.0.rc"
+  gem "guard-rspec"
+  gem "factory_girl_rails"
+  gem "mongoid-rspec"
+  gem "capybara"
 end
 
 gem "jquery-rails"
