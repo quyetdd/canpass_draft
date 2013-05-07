@@ -10,6 +10,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :language
       t.integer :status, default: 1
       t.integer :password_flg
+      t.integer :create_usr_id
+      t.integer :update_usr_id
 
       t.timestamps
     end

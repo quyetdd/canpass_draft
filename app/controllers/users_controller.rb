@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.password = SecureRandom.urlsafe_base64(6)
+    @user.create_usr_id = current_user.id
     if @user.save
       flash[:success] = "User was successfully created"
       UserMailer.send_password(@user, @user.password).deliver if @user.password_flg == 1
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.update_usr_id = current_user.id
     if @user.update_attributes(params[:user])
       flash[:success] = "User was successfully updated"
       redirect_to @user
@@ -43,6 +45,6 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_url
+    redirect_to users_path
   end
 end
