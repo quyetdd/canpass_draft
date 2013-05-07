@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Promotion name:</b>
+  <%= @promotion.promotion_name %>
+</p>
+
+<p>
+  <b>Promotion category:</b>
+  <%= @promotion.promotion_category_id %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%= @promotion.client_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @promotion.status %>
+</p>
+
+<p>
+  <b>Del flg:</b>
+  <%= @promotion.del_flg %>
+</p>
+
+<p>
+  <b>Create usr:</b>
+  <%= @promotion.create_usr_id %>
+</p>
+
+<p>
+  <b>Update usr:</b>
+  <%= @promotion.update_usr_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_promotion_path(@promotion) %> |
+<%= link_to 'Back', promotions_path %>
