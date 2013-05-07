@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503070520) do
+ActiveRecord::Schema.define(:version => 20130507041711) do
+
+  create_table "block_login_users", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "block_at_time"
+    t.integer  "login_fail_num", :limit => 1
+  end
 
   create_table "client_users", :force => true do |t|
     t.integer  "client_id"

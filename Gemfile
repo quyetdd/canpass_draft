@@ -27,16 +27,11 @@ group :development, :test do
   gem "pry-stack_explorer"
   gem "pry-rails"
   gem "growl"
-  gem "guard"
-  gem "guard-rspec"
-  gem "guard-spork"
   gem "rb-fsevent", require: false
 end
 
 group :test do
   gem "rspec-rails"
-  gem "spork", "~> 0.9.0.rc"
-  gem "guard-rspec"
   gem "factory_girl_rails"
   gem "capybara"
 end
