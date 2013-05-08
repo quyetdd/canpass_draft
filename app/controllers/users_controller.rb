@@ -47,4 +47,9 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_path
   end
+  
+  def change_lang
+    cookies[:locale] = params[:lang]
+    redirect_to request.referer
+  end
 end
