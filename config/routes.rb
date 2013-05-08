@@ -1,4 +1,5 @@
 Canpass::Application.routes.draw do
+  resources :promotions
   resources :clients
   resources :users
   resources :roles

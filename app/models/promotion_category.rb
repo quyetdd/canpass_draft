@@ -1,0 +1,5 @@
+class PromotionCategory < ActiveRecord::Base
+  attr_accessible :category_name
+
+  has_many :promotions
+end
