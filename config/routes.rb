@@ -1,16 +1,20 @@
 Canpass::Application.routes.draw do
   resources :promotions
+  resources :dashboard
   resources :clients
   resources :users do
     get "change_lang", on: :collection
+    post "get_users_list", on: :collection
   end
   resources :roles
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy] do
+    post "resend_password", on: :collection
+  end
   
   match "/signin",  to: "sessions#new"
   match "/signout", to: "sessions#destroy", via: :delete
 
-  root :to => "sessions#new"
+  root to: "dashboard#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
