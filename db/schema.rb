@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(:version => 20130507041711) do
   create_table "client_users", :force => true do |t|
     t.integer  "client_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "del_flg",    :default => 1
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "clients", :force => true do |t|
@@ -34,11 +35,14 @@ ActiveRecord::Schema.define(:version => 20130507041711) do
     t.integer  "contract_flg"
     t.integer  "contract_type"
     t.integer  "del_flg",         :default => 1
+    t.integer  "create_usr_id"
+    t.integer  "update_usr_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
   end
 
   add_index "clients", ["client_name"], :name => "index_clients_on_client_name", :unique => true
+  add_index "clients", ["romaji_name"], :name => "index_clients_on_romaji_name", :unique => true
 
   create_table "promotion_categories", :force => true do |t|
     t.string   "category_name"
@@ -64,9 +68,11 @@ ActiveRecord::Schema.define(:version => 20130507041711) do
 
   create_table "roles", :force => true do |t|
     t.string   "role_name"
-    t.integer  "active_flg", :default => 1
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.integer  "active_flg",    :default => 1
+    t.integer  "create_usr_id"
+    t.integer  "update_usr_id"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   add_index "roles", ["role_name"], :name => "index_roles_on_role_name", :unique => true
@@ -81,6 +87,8 @@ ActiveRecord::Schema.define(:version => 20130507041711) do
     t.string   "language"
     t.integer  "status",          :default => 1
     t.integer  "password_flg"
+    t.integer  "create_usr_id"
+    t.integer  "update_usr_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
   end

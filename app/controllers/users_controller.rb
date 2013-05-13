@@ -52,4 +52,14 @@ class UsersController < ApplicationController
     cookies[:locale] = params[:lang]
     redirect_to request.referer
   end
+  
+  def get_users_list
+    @users = User.all
+    @rows = Array.new
+    @users.each do |user|
+      @rows << {"id" => user.id, "cell" => {"username" => user.username, "role_id" => user.role_id}}
+    end
+    @data = {"page" => 1, "total" => 1, "rows" => @rows} 
+    render json: @data.to_json
+  end
 end
