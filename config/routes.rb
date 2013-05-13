@@ -1,7 +1,9 @@
 Canpass::Application.routes.draw do
   resources :promotions
   resources :clients
-  resources :users
+  resources :users do
+    get "change_lang", on: :collection
+  end
   resources :roles
   resources :sessions, only: [:new, :create, :destroy]
   
