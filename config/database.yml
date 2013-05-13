@@ -12,11 +12,11 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: canpass_draft_development
+  database: polaris_dev
   pool: 5
   username: root
-  password: "123456"
-  socket: /var/run/mysqld/mysqld.sock
+  password: ""
+  host: 192.168.1.89
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -25,9 +25,9 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: canpass_draft_test
+  database: polaris_test
   pool: 5
   username: root
-  password: "123456"
-  socket: /var/run/mysqld/mysqld.sock
+  password: ""
+  host: 192.168.1.89
 
