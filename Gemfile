@@ -9,6 +9,9 @@ gem "rails_config"
 gem "mysql2"
 gem "bcrypt-ruby"
 gem 'bootstrap-sass', '2.1'
+gem "recaptcha", :require => "recaptcha/rails"
+gem "curl"
+gem "feedzirra"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
