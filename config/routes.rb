@@ -1,5 +1,7 @@
 Canpass::Application.routes.draw do
-  resources :promotions
+  resources :promotions do
+    get "search", on: :collection
+  end
   resources :dashboard
   resources :clients
   resources :users do

@@ -1,40 +1,47 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Promotion name:</b>
-  <%= @promotion.promotion_name %>
-</p>
-
-<p>
-  <b>Promotion category:</b>
-  <%= @promotion.promotion_category_id %>
-</p>
-
-<p>
-  <b>Client:</b>
-  <%= @promotion.client_id %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @promotion.status %>
-</p>
-
-<p>
-  <b>Del flg:</b>
-  <%= @promotion.del_flg %>
-</p>
-
-<p>
-  <b>Create usr:</b>
-  <%= @promotion.create_usr_id %>
-</p>
-
-<p>
-  <b>Update usr:</b>
-  <%= @promotion.update_usr_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_promotion_path(@promotion) %> |
-<%= link_to 'Back', promotions_path %>
+<div id="container" style="height: 200px; min-width: 600px"></div>
+<%= high_chart("container", @chart) %>
+<script>
+$(function() {
+	$('#container').highcharts('StockChart', {
+	    
+	    chart: {
+	    },
+	    
+	    legend: {
+	    	enabled: true,
+	    	align: 'right',
+        	backgroundColor: '#FCFFC5',
+        	borderColor: 'black',
+        	borderWidth: 2,
+	    	layout: 'vertical',
+	    	verticalAlign: 'top',
+	    	y: 100,
+	    	shadow: true
+	    },
+	    
+	    rangeSelector: {
+	    	selected: 1
+	    },
+	    
+	    series: [{
+	        name: 'ADBE',
+	        data: ADBE
+	    }, {
+	        name: 'MSFT',
+	        data: MSFT
+	    }]
+	});
+});
+</script>
+<div class="searchbox">
+ Search: <input type="text" name="q" class="query" id="bangvk" placeholder="Search" style="width:200px"/>
+</div>
+<script>
+	$("#bangvk").click(function() {
+		$(this).attr("placeholder", "");
+	});
+	
+	$("#bangvk").focusout(function() {
+		$(this).attr("placeholder", "Search");
+	});
+</script>
