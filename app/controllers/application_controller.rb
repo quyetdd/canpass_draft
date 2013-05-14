@@ -16,4 +16,19 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = cookies[:locale] || I18n.default_locale
   end
+  
+  JS_ESCAPE_MAP = {
+                    '\\'    => '\\\\',
+                    '</'    => '<\/',
+                    "\r\n"  => '\n',
+                    "\n"    => '\n',
+                    "\r"    => '\n',
+                    '"'     => '\\"',
+                    "'"     => "\\'" }
+
+  def escape_javascript(str)
+    return str if str.blank?
+    str.gsub!(/(\\|<\/|\r\n|[\n\r"'])/) { JS_ESCAPE_MAP[$1] }
+    str
+  end
 end
