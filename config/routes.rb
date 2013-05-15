@@ -3,6 +3,7 @@ Canpass::Application.routes.draw do
     get "search", on: :collection
   end
   resources :dashboard
+  resources :imports, only: [:new, :create, :show]
   resources :clients
   resources :users do
     get "change_lang", on: :collection
