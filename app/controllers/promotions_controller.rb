@@ -1,4 +1,5 @@
 class PromotionsController < ApplicationController
+  require "finder"
   def index
     @promotions = Promotion.all
   end
@@ -61,11 +62,15 @@ class PromotionsController < ApplicationController
       return
     end
     params[:q].gsub!(/'/,'')
-    @search = Redis::Search.complete("Promotion", params[:q])    
+    @search = Promotion.where("promotion_name like ?", "%#{params[:q]}%")
     lines = @search.collect do |item|
       puts item
-      "#{escape_javascript(item['title'])}#!##{item['id']}#!##{item['title']}#!##{item['title']}#!##{escape_javascript(item['title'])}"
+      "#{escape_javascript(item['promotion_name'])}#!##{item['id']}#!##{item['promotion_name']}#!##{item['promotion_name']}#!##{escape_javascript(item['promotion_name'])}"
     end
-    render :text => lines.join("\n")
+    if @search.count > 0
+      render :text => lines.join("\n")
+    else
+      render text: ""
+    end
   end
 end
