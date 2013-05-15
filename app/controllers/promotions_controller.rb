@@ -3,8 +3,18 @@ class PromotionsController < ApplicationController
     @promotions = Promotion.all
   end
 
+  # display dashboard screen
   def show
-    @promotion = Promotion.find(params[:id])
+    #@promotion = Promotion.find(params[:id])
+    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+    f.series(:type=> 'spline',:name=> 'Clicks', :data=> [300, 200, 300, 0, 500, 350, 250, 270, 280, 260, 262, 265])
+	f.series(:type=> 'spline',:name=> 'Imp', :data=> [200, 0, 200, 500, 400, 450, 420, 350, 240, 230, 211, 245], :color => 'green')
+	f.legend(:align => "right", :verticalAlign => "top", :y => 0, :x => -50, :layout => 'vertical', :borderWidth => 0)
+	f.xAxis(:categories => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+			:labels => {:style => {:color => '#6D869F', :font => '12px Helvetical'}},
+			)
+	f.yAxis(:min => 0, :title => '')
+	end
   end
 
   def new
@@ -43,5 +53,19 @@ class PromotionsController < ApplicationController
     @promotion = Promotion.find(params[:id])
     @promotion.destroy
     redirect_to promotions_path
+  end
+  
+  def search
+    if params[:q].blank?
+      render :text => ""
+      return
+    end
+    params[:q].gsub!(/'/,'')
+    @search = Redis::Search.complete("Promotion", params[:q])    
+    lines = @search.collect do |item|
+      puts item
+      "#{escape_javascript(item['title'])}#!##{item['id']}#!##{item['title']}#!##{item['title']}#!##{escape_javascript(item['title'])}"
+    end
+    render :text => lines.join("\n")
   end
 end
