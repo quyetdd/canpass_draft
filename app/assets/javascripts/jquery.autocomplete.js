@@ -16,6 +16,7 @@
 	
 $.fn.extend({
 	autocomplete: function(urlOrData, options) {
+		
 		var isUrl = typeof urlOrData == "string";
 		options = $.extend({}, $.Autocompleter.defaults, {
 			url: isUrl ? urlOrData : null,
@@ -31,6 +32,7 @@ $.fn.extend({
 		options.formatMatch = options.formatMatch || options.formatItem;
 		
 		return this.each(function() {
+			alert("abcd");
 			new $.Autocompleter(this, options);
 		});
 	},
