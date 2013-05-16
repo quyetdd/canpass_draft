@@ -47,6 +47,8 @@ group :test do
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem "capybara"
+  gem "simplecov", require: false
+  gem "simplecov-rcov", require: false
 end
 
 gem "jquery-rails"
