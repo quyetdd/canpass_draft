@@ -257,10 +257,10 @@ $.Autocompleter = function(input, options) {
       select.show();
       return;
     }
-		
+		/*
 		if ( !skipPrevCheck && currentValue == previousValue )
 			return;
-		
+		*/
 		previousValue = currentValue;
 		
 		currentValue = lastWord(currentValue);
@@ -703,26 +703,29 @@ $.Autocompleter.Select = function (options, input, select, config) {
     }
     else if(data == "default"){
       list.empty();
-			var li = $("<li/>").html( options.defaultHTML ).addClass("ac_default").appendTo(list)[0];
-			$.data(li,"ac_data", null);
+			//var li = $("<li/>").html( options.defaultHTML ).addClass("ac_default").appendTo(list)[0];
+			//$.data(li,"ac_data", null);
     }
     else{
-      list.empty();
-      var max = limitNumberOfItems(data.length);
-      for (var i=0; i < max; i++) {
-        if (!data[i])
-          continue;
-        var formatted = options.formatItem(data[i].data, i+1, max, data[i].value, term);
-        if ( formatted === false )
-          continue;
-        var li = $("<li/>").html( options.highlight(formatted, term) ).addClass(i%2 == 0 ? "ac_even" : "ac_odd").appendTo(list)[0];
-        $.data(li, "ac_data", data[i]);
-      }
-      listItems = list.find("li");
-      if ( options.selectFirst ) {
-        listItems.slice(0, 1).addClass(CLASSES.ACTIVE);
-        active = 0;
-      }
+    	list.empty();
+	  if (data[0].data[1] != "0")
+      {
+	      var max = limitNumberOfItems(data.length);
+	      for (var i=0; i < max; i++) {
+	        if (!data[i])
+	          continue;
+	        var formatted = options.formatItem(data[i].data, i+1, max, data[i].value, term);
+	        if ( formatted === false )
+	          continue;
+	        var li = $("<li/>").html( options.highlight(formatted, term) ).addClass(i%2 == 0 ? "ac_even" : "ac_odd").appendTo(list)[0];
+	        $.data(li, "ac_data", data[i]);
+	      }
+	      listItems = list.find("li");
+	      if ( options.selectFirst ) {
+	        listItems.slice(0, 1).addClass(CLASSES.ACTIVE);
+	        active = 0;
+	      }
+		}
     }
     // apply bgiframe if available
     if ( $.fn.bgiframe )

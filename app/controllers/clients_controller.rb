@@ -1,7 +1,10 @@
 class ClientsController < ApplicationController
   def index
-    @clients = Client.all
-    @promotions = Promotion.all
+    @clients = Client.where(del_flg: 0)
+	@promotions = Array.new
+	@clients.each do |client|
+	  @promotions = client.promotions
+	end
   end
 
   def show
