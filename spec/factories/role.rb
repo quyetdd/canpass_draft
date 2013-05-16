@@ -11,4 +11,7 @@ FactoryGirl.define do
   factory :role_with_client, class: Role do
     role_name "Client"
   end
+  factory :role_with_only_name, class: Role do
+    role_name "Client"
+  end
 end
