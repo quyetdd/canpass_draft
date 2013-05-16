@@ -17,6 +17,8 @@ gem "lazy_high_charts"
 gem 'rmmseg-cpp-huacnlee', '0.2.9'
 gem 'redis-namespace'
 gem 'redis-search'
+gem "sunspot_rails"
+gem "sunspot_solr"
 gem "redis"
 gem "resque"
 gem "paperclip"
