@@ -19,6 +19,9 @@ gem 'redis-namespace'
 gem 'redis-search'
 gem "sunspot_rails"
 gem "sunspot_solr"
+gem "redis"
+gem "resque"
+gem "paperclip"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
