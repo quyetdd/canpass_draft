@@ -4,11 +4,10 @@ class Promotion < ActiveRecord::Base
   belongs_to :client
   belongs_to :promotion_category
   
-  include Redis::Search
-  redis_search_index(:title_field => :promotion_name, :alias_field => :alias,
-    :prefix_index_enable => true)
-
-  def alias
-    [self.promotion_name]
+  searchable do
+    text :promotion_name, :stored => true 
+    integer :client_id
+    string :status
+    time :created_at
   end
 end

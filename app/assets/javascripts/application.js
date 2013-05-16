@@ -25,7 +25,8 @@
       if (data[3] !== "") {
         watchs = "<abbr>(" + data[3] + " Watchers)</abbr>";
       }
-      html += "<div class='info'><a href=/promotions/" + data[1] + ">" + data[0] + "</a>" + watchs + "<br />" + data[4] + "</div>";
+      html += "<div class='info' id ='solr_result'><a href=/promotions/" + data[1] + ">" + data[0] + "</a>" + watchs + "<br />" + data[4] + "</div>";
+      
       return html;
     },
     completeProjects: function(el) {
@@ -39,7 +40,9 @@
         formatItem: function(data, i, total) {
           return App.completeProjectLine(data);
         }
+        
       };
+      //console.log(hash);
       return $(el).autocomplete("/promotions/search", hash).result(function(e, data, formatted) {
         location.href = "/promotions/" + data[1];
         return false;

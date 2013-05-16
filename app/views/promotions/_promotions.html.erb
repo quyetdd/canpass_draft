@@ -1,12 +1,15 @@
+<div>
 <table>
   <tr>
-    <th>Status</th>
     <th>Promotion name</th>
   </tr>
-  <% @promotions.each do |promotion| %>
+</table>
+</div>
+<div>
+<% @promotions.each do |promotion| %>
     <tr>
-      <td><%= promotion.status %></td>
       <td><%= link_to promotion.promotion_name, promotion_path(promotion) %></td>
     </tr>
   <% end %>
-</table>
+
+</div>
