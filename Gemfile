@@ -17,9 +17,8 @@ gem "lazy_high_charts"
 gem 'rmmseg-cpp-huacnlee', '0.2.9'
 gem 'redis-namespace'
 gem 'redis-search'
-gem "redis"
-gem "resque"
-gem "paperclip"
+gem "sunspot_rails"
+gem "sunspot_solr"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
