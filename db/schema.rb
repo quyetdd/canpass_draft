@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130507041711) do
+ActiveRecord::Schema.define(:version => 20130514073139) do
 
   create_table "block_login_users", :force => true do |t|
     t.integer  "user_id"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(:version => 20130507041711) do
 
   add_index "clients", ["client_name"], :name => "index_clients_on_client_name", :unique => true
   add_index "clients", ["romaji_name"], :name => "index_clients_on_romaji_name", :unique => true
+
+  create_table "imports", :force => true do |t|
+    t.string   "csv_file_name"
+    t.string   "csv_content_type"
+    t.string   "csv_file_size"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "promotion_categories", :force => true do |t|
     t.string   "category_name"
