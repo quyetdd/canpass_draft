@@ -1,0 +1,35 @@
+<h1>Listing promotions</h1>
+
+<table>
+  <tr>
+    <th>Promotion name</th>
+    <th>Promotion category</th>
+    <th>Client</th>
+    <th>Status</th>
+    <th>Del flg</th>
+    <th>Create usr</th>
+    <th>Update usr</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @promotions.each do |promotion| %>
+  <tr>
+    <td><%= promotion.promotion_name %></td>
+    <td><%= promotion.promotion_category_id %></td>
+    <td><%= promotion.client_id %></td>
+    <td><%= promotion.status %></td>
+    <td><%= promotion.del_flg %></td>
+    <td><%= promotion.create_usr_id %></td>
+    <td><%= promotion.update_usr_id %></td>
+    <td><%= link_to 'Show', promotion %></td>
+    <td><%= link_to 'Edit', edit_promotion_path(promotion) %></td>
+    <td><%= link_to 'Destroy', promotion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Promotion', new_promotion_path %>

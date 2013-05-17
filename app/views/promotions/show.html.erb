@@ -1,0 +1,22 @@
+<div id="container" style="height: 150px; min-width: 600px"></div>
+<%= high_chart("container", @chart) %>
+<script>
+
+</script>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="searchbox">
+ Search: <input type="text" name="q" class="query" id="search_promotion" placeholder="Search" style="width:200px"/>
+</div>
+<script>
+	$("#search_promotion").click(function() {
+		$(this).attr("placeholder", "");
+	});
+	
+	$("#search_promotion").focusout(function() {
+		$(this).attr("placeholder", "Search");
+	});
+</script>
